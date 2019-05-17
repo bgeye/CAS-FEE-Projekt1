@@ -1,0 +1,23 @@
+/**
+    base.css
+ */
+
+
+
+/*typography*/
+
+body {
+    font-family: 'Montserrat', sans-serif;
+}
+
+
+/* base classes */
+
+
+.flex-container {
+    display: flex;
+    max-width: 60rem;
+    padding: 0 1rem;
+    flex-direction: column;
+    margin: 0 auto;
+}

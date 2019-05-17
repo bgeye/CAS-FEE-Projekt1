@@ -1,0 +1,43 @@
+/**
+    list.css
+ */
+
+.notelist {
+    padding: 2rem 0;
+}
+
+.notelist__item {
+    display: flex;
+    border: 1px solid var(--color-lightgray);
+    padding: .5rem 0;
+}
+
+
+.item__left {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.item__left,
+.item__right{
+    flex: 1;
+}
+
+.item__center {
+    padding: 0 1rem;
+    flex-basis: 70%;
+}
+
+.item__header {
+    display: flex;
+    justify-content: space-between;
+}
+
+.item__title h4 {
+    margin: 0;
+}
+
+.item__description {
+    display: flex;
+}

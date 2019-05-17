@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <meta name="robots" content="noindex, nofollow">
+        <meta name="publisher" content="Mario Knecht">
+        <meta name="application-name" content="Notes">
+        <meta name="description" content="A simple way to manage notes.">
+        <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
+        <link rel="stylesheet" href="css/main.css" type="text/css">
+        <title>Notes</title>
+    </head>
+    <body>
+        <div class="content">
+            <div class="flex-container">
+                <header>
+                    <h1>Create Note</h1>
+                </header>
+                <main>
+                    <form action="" class="form-grid">
+                        <label for="title" class="form-grid__label">Titel </label>
+                        <input type="text" name="title" id="title" class="form-grid__field">
+                        <label for="description" class="form-grid__label">Beschreibung</label>
+                        <textarea id="description" name="description" rows="5" cols="33"  class="form-grid__field"></textarea>
+                        <div class="form-grid__label">Wichtigkeit</div>
+                        <fieldset class="importance-wrapper" class="form-grid__fieldset">
+                            <input class="importance-wrapper__field" id="importance-1" type="radio" name="importance" value="1"
+                                   checked>
+                            <label for="importance-1"></label>
+                            <input class="importance-wrapper__field" id="importance-2" type="radio" name="importance" value="2"
+                                   checked>
+                            <label for="importance-2"></label>
+                            <input class="importance-wrapper__field" id="importance-3" type="radio" name="importance" value="3"
+                                   checked>
+                            <label for="importance-3"></label>
+                            <input class="importance-wrapper__field" id="importance-4" type="radio" name="importance" value="4"
+                                   checked>
+                            <label for="importance-4"></label>
+                            <input class="importance-wrapper__field" id="importance-5" type="radio" name="importance" value="5"
+                                   checked>
+                            <label for="importance-5"></label>
+                        </fieldset>
+                        <label for="done" class="form-grid__label">Erledigt bis</label>
+                        <input id="done" type="date" value="" class="form-grid__field">
+                        <input type="submit" name="submit" value="Speichern"  class="form-grid__btn">
+                    </form>
+                    <div class="button-wrapper">
+                        <button class="btn primary">Cancel</button>
+                    </div>
+                </main>
+            </div>
+
+        </div>
+        <footer>
+            <div class="flex-container">
+                <small>CAS-FFE-2019 Projekt1 | Mario Knecht</small>
+            </div>
+        </footer>
+    </body>
+</html>

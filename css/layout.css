@@ -1,0 +1,23 @@
+/**
+    layout.css
+ */
+
+.start-page header nav {
+    display: flex;
+    justify-content: space-between;
+}
+
+.filter {
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem 0;
+}
+
+.filter button:last-child {
+    align-self: flex-end;
+}
+
+footer {
+    padding: 2rem 0;
+    background: var(--color-tomato);
+}
