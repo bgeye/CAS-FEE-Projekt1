@@ -26,25 +26,20 @@
                         <textarea id="description" name="description" rows="5" cols="33"  class="form-grid__field"></textarea>
                         <div class="form-grid__label">Wichtigkeit</div>
                         <fieldset class="importance-wrapper" class="form-grid__fieldset">
-                            <input class="importance-wrapper__field" id="importance-1" type="radio" name="importance" value="1"
-                                   checked>
+                            <input class="importance-wrapper__field" id="importance-1" type="radio" name="importance" value="1">
                             <label for="importance-1"></label>
-                            <input class="importance-wrapper__field" id="importance-2" type="radio" name="importance" value="2"
-                                   checked>
+                            <input class="importance-wrapper__field" id="importance-2" type="radio" name="importance" value="2">
                             <label for="importance-2"></label>
-                            <input class="importance-wrapper__field" id="importance-3" type="radio" name="importance" value="3"
-                                   checked>
+                            <input class="importance-wrapper__field" id="importance-3" type="radio" name="importance" value="3">
                             <label for="importance-3"></label>
-                            <input class="importance-wrapper__field" id="importance-4" type="radio" name="importance" value="4"
-                                   checked>
+                            <input class="importance-wrapper__field" id="importance-4" type="radio" name="importance" value="4">
                             <label for="importance-4"></label>
-                            <input class="importance-wrapper__field" id="importance-5" type="radio" name="importance" value="5"
-                                   checked>
+                            <input class="importance-wrapper__field" id="importance-5" type="radio" name="importance" value="5">
                             <label for="importance-5"></label>
                         </fieldset>
-                        <label for="done" class="form-grid__label">Erledigt bis</label>
-                        <input id="done" type="date" value="" class="form-grid__field">
-                        <input type="submit" name="submit" value="Speichern"  class="form-grid__btn">
+                        <label for="donedate" class="form-grid__label">Erledigt bis</label>
+                        <input id="donedate" type="date" min="2019-05-18" class="form-grid__field">
+                        <button type="button" class="form-grid__btn" onclick="save()">Speichern</button>
                     </form>
                     <div class="button-wrapper">
                         <button class="btn primary">Cancel</button>
@@ -58,5 +53,6 @@
                 <small>CAS-FFE-2019 Projekt1 | Mario Knecht</small>
             </div>
         </footer>
+        <script src="js/createnote.js"></script>
     </body>
 </html>
