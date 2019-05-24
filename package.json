@@ -1,0 +1,28 @@
+{
+  "name": "notes",
+  "version": "1.0.0",
+  "description": "A simple app to manage notes",
+  "main": "notelist.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bgeye/CAS-FEE-Projekt1.git"
+  },
+  "keywords": [
+    "notes"
+  ],
+  "author": "Mario Knecht",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bgeye/CAS-FEE-Projekt1/issues"
+  },
+  "homepage": "https://github.com/bgeye/CAS-FEE-Projekt1#readme",
+  "dependencies": {
+    "handlebars": "^4.1.2"
+  },
+  "devDependencies": {
+    "eslint": "^5.16.0"
+  }
+}
