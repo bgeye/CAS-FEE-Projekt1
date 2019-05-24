@@ -2,6 +2,6 @@
 .DS_Store
 node_modules
 .eslintrc
-.package-lock.json
+package-lock.json
 /dist
 /Public
