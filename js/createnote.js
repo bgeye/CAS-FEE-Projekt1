@@ -1,10 +1,13 @@
+'use strict';
+
 /**
  * save form inputs in local storage
  */
 
 
-function save() {
-    const notes = JSON.parse(localStorage.getItem('notes'));
+
+function getNote() {
+
     let finished = false;
     const newNote = {};
 
@@ -14,8 +17,13 @@ function save() {
     newNote[document.querySelector('#donedate').id] = document.querySelector('#donedate').value;
     newNote['finished'] = finished;
 
-    notes.push(newNote);
-    localStorage.setItem('notes',JSON.stringify(notes));
-    window.location.replace("index.html");
+    return newNote
+}
 
+
+function save() {
+    const notes = JSON.parse(localStorage.getItem('notes'));
+    notes.push(getNote());
+    localStorage.setItem('notes', JSON.stringify(notes));
+    window.location.replace("index.html");
 }
