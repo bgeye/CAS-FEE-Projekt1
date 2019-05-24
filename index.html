@@ -28,50 +28,55 @@
                     </nav>
                     <div class="filter">
                         <div class="filter__wrapper">
-                            <button type="button" class="btn btn-primary">By finish Date</button>
-                            <button type="button" class="btn btn-primary">By created Date</button>
-                            <button type="button" class="btn btn-primary">By Importance</button>
+                            <button id="filter-finish-date" type="button" class="btn btn-primary">By finish Date</button>
+                            <button id="filter-create-date" type="button" class="btn btn-primary">By created Date</button>
+                            <button id="filter-importance" type="button" class="btn btn-primary">By Importance</button>
                         </div>
-                        <button type="button" class="btn btn-primary">Show finished</button>
+                        <button id="filter-finished" type="button" class="btn btn-primary">Show finished</button>
                     </div>
                 </header>
                 <main>
-                    <div class="notelist">
-                        <article class="notelist__item item">
-                            <div class="item__left">
-                                <div class="item__date">
-                                    <small>Nächsten Mittwoch</small>
-                                </div>
-                                <div class="item__finished">
-                                    <input type="checkbox" name="finished" id="finished">
-                                    <label for="finished">
-                                        <small>Finished [Today]</small>
-                                    </label>
-                                </div>
-                            </div>
-                            <div class="item__center">
-                                <div class="item__header">
-                                    <div class="item__title">
-                                        <h4>CAS FEE Selbststudium / Projekt Aufgabe erledigen</h4>
+                    <div id="list-container" class="notelist">
+                        <script id="note-item-template" type="text/x-handlebars-template">
+                            {{#each this}}
+                            <article class="notelist__item item">
+                                <div class="item__left">
+                                    <div class="item__date">
+                                        <small>Nächsten Mittwoch{{donedate}}</small>
                                     </div>
-                                    <div class="item__importance">
-                                        <i class="item__importance-1">1</i>
-                                        <i class="item__importance-1">2</i>
-                                        <i class="item__importance-1">3</i>
-                                        <i class="item__importance-1">4</i>
-                                        <i class="item__importance-1">5</i>
+                                    <div class="item__finished">
+                                        <input type="checkbox" name="finished" id="finished">
+                                        <label for="finished">
+                                            <small>Finished [Today]{{finished}}</small>
+                                        </label>
                                     </div>
                                 </div>
-                                <div class="item__description">
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum exercitationem ipsam nemo
-                                        neque, saepe velit veritatis voluptates voluptatum? Blanditiis, doloribus?</p>
-                                    <button type="button" class="btn">Show More</button>
+                                <div class="item__center">
+                                    <div class="item__header">
+                                        <div class="item__title">
+                                            <h4>{{title}}</h4>
+                                        </div>
+                                        <div class="item__importance">
+                                            <i class="item__importance-1">{{importance}}</i>
+                                            <!--
+                                            <i class="item__importance-1">2</i>
+                                            <i class="item__importance-1">3</i>
+                                            <i class="item__importance-1">4</i>
+                                            <i class="item__importance-1">5</i>
+                                            -->
+                                        </div>
+                                    </div>
+                                    <div class="item__description">
+                                        <p>{{description}}</p>
+                                        <button type="button" class="btn">Show More</button>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="item__right">
-                                <button type="button" class="btn">Edit</button>
-                            </div>
-                        </article>
+                                <div class="item__right">
+                                    <button type="button" class="btn">Edit</button>
+                                </div>
+                            </article>
+                            {{/each}}
+                        </script>
                     </div>
                 </main>
             </div>
@@ -81,6 +86,9 @@
                 <small>CAS-FFE-2019 Projekt1 | Mario Knecht</small>
             </div>
         </footer>
+
+        <script src="node_modules/handlebars/dist/handlebars.min.js"></script>
         <script src="js/notelist.js"></script>
+
     </body>
 </html>

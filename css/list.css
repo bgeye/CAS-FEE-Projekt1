@@ -19,6 +19,12 @@
     justify-content: space-between;
 }
 
+.item__right {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .item__left,
 .item__right{
     flex: 1;
