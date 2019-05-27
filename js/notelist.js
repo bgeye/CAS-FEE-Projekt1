@@ -62,7 +62,7 @@ const notesOrigin = [
 ];
 const templateSource = document.querySelector('#note-item-template').innerHTML;
 const template = Handlebars.compile(templateSource);
-let notesFiltered = [];
+let notesFiltered;
 
 /**
  * initialize application
@@ -71,7 +71,8 @@ let notesFiltered = [];
 init();
 
 function init() {
-    notesFiltered = [...notesOrigin];
+
+    notesFiltered = getNotes();
     renderNotes(notesFiltered);
     setEventListeners();
 }
@@ -129,17 +130,20 @@ function renderNotes(notes) {
 
 
 /**
- * get notes from local storage
- * @type {string}
+ * get notes
+ * @returns {any}
  */
 
-let storedNotes = localStorage.getItem('notes');
-if (!storedNotes) {
-    localStorage.setItem('notes', JSON.stringify(notesOrigin)); //set static array from this file
-    storedNotes = localStorage.getItem('notes');
-}
 
-storedNotes = JSON.parse(storedNotes);
-document.querySelector('#notecount').innerHTML = storedNotes.length;
+function getNotes() {
+
+    let noteItems = JSON.parse(localStorage.getItem('notes'));
+    if (!noteItems) {
+        localStorage.setItem('notes', JSON.stringify(notesOrigin)); //set static array from this file
+        noteItems = localStorage.getItem('notes');
+    }
+
+    return noteItems
+}
 
 
