@@ -4,7 +4,7 @@
 init();
 
 function init() {
-    if(getUrlId()) {
+    // if(getUrlId()) {
         const templateSource = document.querySelector('#note-item-edit-template').innerHTML;
         const template = Handlebars.compile(templateSource);
         let noteItem = getNoteById(getUrlId());
@@ -13,7 +13,7 @@ function init() {
             const formContainer = document.querySelector('#form-container');
             formContainer.innerHTML = template(notes);
         }
-    }
+    // }
     setEventListeners();
 
 
@@ -46,6 +46,7 @@ function save() {
 
     const notes = getNotesFromLocalStorage();
 
+    //update
     if(getUrlId()) {
         const noteIndex = getNoteIndexById(getUrlId());
         let noteItem = getNoteById(getUrlId());
@@ -59,11 +60,12 @@ function save() {
         localStorage.setItem('notes', JSON.stringify(notes));
 
     } else {
+        //create new
         notes.push(getNote());
         localStorage.setItem('notes', JSON.stringify(notes));
     }
 
-    //window.location.replace("index.html");
+    window.location.replace("index.html");
 }
 
 

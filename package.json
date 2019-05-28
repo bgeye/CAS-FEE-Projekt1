@@ -20,7 +20,8 @@
   },
   "homepage": "https://github.com/bgeye/CAS-FEE-Projekt1#readme",
   "dependencies": {
-    "handlebars": "^4.1.2"
+    "handlebars": "^4.1.2",
+    "moment": "^2.24.0"
   },
   "devDependencies": {
     "eslint": "^5.16.0"
