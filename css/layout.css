@@ -2,7 +2,38 @@
     layout.css
  */
 
-.start-page header nav {
+
+.page-content {
+    height: 100%;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr auto;
+    grid-template-areas: "header header header" "main main main" "footer footer footer";
+
+}
+
+header {
+    grid-area: header;
+    padding: 1rem;
+    background: var(--color-lightgray);
+}
+
+main {
+    grid-area: main;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+footer {
+    grid-area: footer;
+    padding: 2rem 1rem;
+    background: var(--color-tomato);
+}
+
+.controls nav {
     display: flex;
     justify-content: space-between;
 }
@@ -15,9 +46,4 @@
 
 .filter button:last-child {
     align-self: flex-end;
-}
-
-footer {
-    padding: 2rem 0;
-    background: var(--color-tomato);
 }

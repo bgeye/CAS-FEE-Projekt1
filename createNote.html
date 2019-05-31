@@ -14,50 +14,48 @@
         <script src="node_modules/moment/min/moment-with-locales.min.js"></script>
     </head>
     <body>
-        <div class="content">
-            <div class="flex-container">
+        <div class="page-content">
                 <header>
                     <h1>Create Note</h1>
                 </header>
                 <main id="form-container">
-                    <script id="note-item-edit-template" type="text/x-handlebars-template">
+                    <div class="main-content">
+                        <script id="note-item-edit-template" type="text/x-handlebars-template">
+                            <form action="" class="form-grid">
+                                <label for="title" class="form-grid__label">Titel </label>
+                                <input type="text" name="title" id="title" class="form-grid__field" value="{{title}}">
+                                <label for="description" class="form-grid__label">Beschreibung</label>
+                                <textarea id="description" name="description" rows="5" cols="33"  class="form-grid__field">{{description}}</textarea>
+                                <label class="form-grid__label" for="importance">Wichtigkeit</label>
+                                <fieldset class="importance-wrapper" class="form-grid__field" id="importance">
+                                    <input class="importance-wrapper__field" id="importance-1" type="radio" name="importance" value="1" {{checkImportance 1 importance}}>
+                                    <label for="importance-1"></label>
+                                    <input class="importance-wrapper__field" id="importance-2" type="radio" name="importance" value="2" {{checkImportance 2 importance}}>
+                                    <label for="importance-2"></label>
+                                    <input class="importance-wrapper__field" id="importance-3" type="radio" name="importance" value="3" {{checkImportance 3 importance}}>
+                                    <label for="importance-3"></label>
+                                    <input class="importance-wrapper__field" id="importance-4" type="radio" name="importance" value="4" {{checkImportance 4 importance}}>
+                                    <label for="importance-4"></label>
+                                    <input class="importance-wrapper__field" id="importance-5" type="radio" name="importance" value="5" {{checkImportance 5 importance}}>
+                                    <label for="importance-5"></label>
+                                </fieldset>
+                                <label for="donedate" class="form-grid__label">Erledigt bis</label>
+                                <input id="donedate" type="date" min="{{getCurrentDate}}" class="form-grid__field" value="{{formatDateDatepicker donedate}}">
 
-                        <form action="" class="form-grid">
-                            <label for="title" class="form-grid__label">Titel </label>
-                            <input type="text" name="title" id="title" class="form-grid__field" value="{{title}}">
-                            <label for="description" class="form-grid__label">Beschreibung</label>
-                            <textarea id="description" name="description" rows="5" cols="33"  class="form-grid__field">{{description}}</textarea>
-                            <div class="form-grid__label">Wichtigkeit</div>
-                            <fieldset class="importance-wrapper" class="form-grid__fieldset">
-                                <input class="importance-wrapper__field" id="importance-1" type="radio" name="importance" value="1" {{checkImportance 1 importance}}>
-                                <label for="importance-1"></label>
-                                <input class="importance-wrapper__field" id="importance-2" type="radio" name="importance" value="2" {{checkImportance 2 importance}}>
-                                <label for="importance-2"></label>
-                                <input class="importance-wrapper__field" id="importance-3" type="radio" name="importance" value="3" {{checkImportance 3 importance}}>
-                                <label for="importance-3"></label>
-                                <input class="importance-wrapper__field" id="importance-4" type="radio" name="importance" value="4" {{checkImportance 4 importance}}>
-                                <label for="importance-4"></label>
-                                <input class="importance-wrapper__field" id="importance-5" type="radio" name="importance" value="5" {{checkImportance 5 importance}}>
-                                <label for="importance-5"></label>
-                            </fieldset>
-                            <label for="donedate" class="form-grid__label">Erledigt bis</label>
-                            <input id="donedate" type="date" min="{{getCurrentDate}}" class="form-grid__field" value="{{formatDateDatepicker donedate}}">
-                            <button id="form-submit" type="submit" class="form-grid__btn">Speichern</button>
-                            <div class="button-wrapper">
-                                <button type="reset" class="btn primary">Cancel</button>
-                            </div>
-                        </form>
-                    </script>
-
+                                <div class="button-wrapper form-grid__field">
+                                    <button type="reset" class="btn btn-primary">Cancel</button>
+                                    <button id="form-submit" type="submit" class="btn btn-primary">Speichern</button>
+                                </div>
+                            </form>
+                        </script>
+                    </div>
                 </main>
-            </div>
-
+                <footer>
+                    <div class="flex-container">
+                        <small>CAS-FFE-2019 Projekt1 | Mario Knecht</small>
+                    </div>
+                </footer>
         </div>
-        <footer>
-            <div class="flex-container">
-                <small>CAS-FFE-2019 Projekt1 | Mario Knecht</small>
-            </div>
-        </footer>
 
         <script src="node_modules/handlebars/dist/handlebars.min.js"></script>
         <script src="js/handlebarshelpers.js"></script>
