@@ -16,6 +16,8 @@ header {
     grid-area: header;
     padding: 1rem;
     background: var(--color-lightgray);
+    /*position:fixed;*/
+    /*width: 100%;*/
 }
 
 main {
@@ -25,6 +27,7 @@ main {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+
 }
 
 footer {

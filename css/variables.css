@@ -3,6 +3,9 @@
  */
 
 body {
+    --color-white: #fff;
     --color-tomato:tomato;
     --color-lightgray: lightgray;
+    --color-gray-20: #6c757d;
+    --color-gray-30: #5a6268;
 }

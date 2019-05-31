@@ -8,3 +8,6 @@
 @import 'layout.css';
 @import 'form.css';
 @import 'list.css';
+
+@import './partials/button.css';
+@import './partials/select.css';
