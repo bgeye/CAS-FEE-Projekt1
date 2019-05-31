@@ -42,8 +42,8 @@ function getNote() {
 }
 
 
-function save() {
-
+function save(e) {
+    e.preventDefault();
     const notes = getNotesFromLocalStorage();
 
     //update

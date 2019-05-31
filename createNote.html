@@ -40,16 +40,15 @@
                                 <input class="importance-wrapper__field" id="importance-5" type="radio" name="importance" value="5" {{checkImportance 5 importance}}>
                                 <label for="importance-5"></label>
                             </fieldset>
-
                             <label for="donedate" class="form-grid__label">Erledigt bis</label>
-
                             <input id="donedate" type="date" min="{{getCurrentDate}}" class="form-grid__field" value="{{formatDateDatepicker donedate}}">
-                            <button id="form-submit" type="button" class="form-grid__btn">Speichern</button>
+                            <button id="form-submit" type="submit" class="form-grid__btn">Speichern</button>
+                            <div class="button-wrapper">
+                                <button type="reset" class="btn primary">Cancel</button>
+                            </div>
                         </form>
                     </script>
-                    <div class="button-wrapper">
-                        <button class="btn primary">Cancel</button>
-                    </div>
+
                 </main>
             </div>
 
