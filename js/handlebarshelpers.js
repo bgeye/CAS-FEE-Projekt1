@@ -1,52 +1,60 @@
 /**
- * Helper to check and set the importance in note to edit
+ * Check and set the importance in note to edit
  */
-Handlebars.registerHelper('checkImportance', function(value,importance) {
+Handlebars.registerHelper('checkImportance', function (value, importance) {
 
 
-    if(value === Number(importance)) {
+    if (value === Number(importance)) {
         return 'checked'
     } else {
         return ''
     }
-
-    //value => (value === importance) ? 'checked' : '';
-
 });
 
 /**
- * Helper to check if note has state finished
+ * Check if note has state finished
  */
-Handlebars.registerHelper('isFinished', function(value) {
+Handlebars.registerHelper('isFinished', function (value) {
 
 
-    if(value === true) {
+    if (value === true) {
         return 'checked'
     } else {
         return ''
     }
+});
 
-    //value => (value === true) ? 'checked' : '';
+
+/**
+ * Get current date
+ */
+Handlebars.registerHelper('getCurrentDate', function (format) {
+
+    return moment().format(format)
 
 });
 
 /**
- * Helper to format the date for the datepicker in editform
+ * Format Date
  */
-Handlebars.registerHelper('formatDateDatepicker', function(date) {
+Handlebars.registerHelper('formatDate', function (date, format) {
 
-    return moment(date).format('YYYY-MM-DD')
+    var mmt = moment(date);
+    return mmt.format(format)
 
 });
+
 
 /**
- * Helper to get current date
+ * Render icons to visualize importance
  */
-Handlebars.registerHelper('getCurrentDate', function(date) {
-
-    return moment().format('YYYY-MM-DD')
-
+Handlebars.registerHelper('iconStar', function (value, block) {
+    let accum = '';
+    for (let i = 0; i < value; ++i)
+        accum += block.fn(i);
+    return accum;
 });
+
 
 
 
