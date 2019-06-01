@@ -15,7 +15,7 @@
 header {
     grid-area: header;
     padding: 1rem;
-    background: var(--color-lightgray);
+    text-align: center;
     /*position:fixed;*/
     /*width: 100%;*/
 }
@@ -33,7 +33,7 @@ main {
 footer {
     grid-area: footer;
     padding: 2rem 1rem;
-    background: var(--color-tomato);
+    text-align: center;
 }
 
 .controls nav {

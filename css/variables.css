@@ -2,10 +2,24 @@
     variables.css
  */
 
+
+/*
+colors
+https://www.december.com/html/spec/color0.html
+
+*/
+
 body {
     --color-white: #fff;
-    --color-tomato:tomato;
-    --color-lightgray: lightgray;
-    --color-gray-20: #6c757d;
+    --color-black: #000;
+
     --color-gray-30: #5a6268;
+    --color-gray-20: #6c757d;
+    --color-lightgray: lightgray;
+    --color-gray-92: #EBEBEB;
+    --color-gray-95: #F2F2F2;
+    --color-gray-98: #FAFAFA;
+
+
+    --color-tomato: tomato;
 }

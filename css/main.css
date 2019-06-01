@@ -11,3 +11,11 @@
 
 @import './partials/button.css';
 @import './partials/select.css';
+@import './partials/checkbox.css';
+
+/* node css includes */
+@import '../node_modules/font-awesome/css/font-awesome.min.css';
+
+
+/* vendors */
+@import './vendors/fontawesome-customized.css';

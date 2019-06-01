@@ -1,8 +1,18 @@
 .select-wrapper {
     position: relative;
     background: var(--color-gray-20);
-    padding: .375rem .75rem;
     display: flex;
+    align-items: center;
+}
+
+.select-wrapper::after {
+    font-family: FontAwesome;
+    content: '\f107';
+    font-size: 1.5rem;
+    position: absolute;
+    right: .75rem;
+    color: var(--color-white);
+    pointer-events: none;
 }
 
 .select-wrapper:hover {
@@ -13,11 +23,8 @@
     background: var(--color-gray-30);
 }
 
-
 select {
-    -moz-appearance: none;
-    -webkit-appearance: none;
-    appearance: none;
+    padding: .375rem 2rem .375rem .75rem;
     border: none;
     color: var(--color-white);
     cursor: pointer;
@@ -25,12 +32,18 @@ select {
     outline: none;
     width: 100%;
     background: var(--color-gray-20);
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -ms-appearance: none;
+    -o-appearance: none;
+    appearance: none;
 }
 
 select option {
     color: var(--color-white);
 }
 
+/* ie fix */
 select::-ms-expand {
     display: none;
 }
