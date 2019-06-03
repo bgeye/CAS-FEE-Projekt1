@@ -50,3 +50,9 @@ footer {
 .filter button:last-child {
     align-self: flex-end;
 }
+
+.divider {
+    display: block;
+    border-bottom: 3px solid var(--color-lightgray);
+    margin-bottom: 3rem;
+}

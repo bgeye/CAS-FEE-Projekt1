@@ -71,6 +71,7 @@ textarea {
     border: none;
     background: var(--color-gray-98);
     border-bottom: 3px solid var(--color-gray-92);
+    transition: border-bottom-color .6s;
 }
 
 input[type="text"]:focus,
