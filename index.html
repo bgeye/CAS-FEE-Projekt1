@@ -47,10 +47,10 @@
                     <section class="notelist__item item">
                         <div class="item__left">
                             <div class="item__date">
-                                <small>{{formatDate donedate 'LL'}}</small>
+                                <small>{{formatDate doneDate 'LL'}}</small>
                             </div>
                             <div class="item__finished">
-                                <input type="checkbox" name="finished" id="finished-{{id}}" data-note-id="{{id}}"
+                                <input type="checkbox" name="finished" id="finished-{{id}}" data-note-id="{{id}}" data-note-checkbox="finished"
                                        {{isFinished finished}}>
                                 <label for="finished-{{id}}">
                                     <small>Finished [Today]</small>

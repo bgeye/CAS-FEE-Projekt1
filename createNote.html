@@ -12,6 +12,10 @@
         <link rel="stylesheet" href="css/main.css" type="text/css">
         <title>Notes</title>
         <script src="node_modules/moment/min/moment-with-locales.min.js"></script>
+        <script src="node_modules/handlebars/dist/handlebars.min.js" defer></script>
+        <script src="js/handlebarshelpers.js" defer></script>
+        <script src="js/utils.js" defer></script>
+        <script src="js/createnote.js" defer></script>
     </head>
     <body>
         <div class="page-content">
@@ -22,7 +26,7 @@
                         <script id="note-item-edit-template" type="text/x-handlebars-template">
                             <div class="main-content">
                                 <div class="form-wrapper">
-                                    <form action="" class="form-grid">
+                                    <form action="" class="form-grid" id="form-note">
                                         <div class="form-row">
                                             <label for="title" class="form-grid__label"><small>Titel</small> </label>
                                             <input type="text" name="title" id="title" class="form-grid__field" value="{{title}}">
@@ -49,11 +53,12 @@
                                         <div class="form-row">
                                             <label for="donedate" class="form-grid__label"><small>Erledigt bis</small></label>
                                             <input id="donedate" type="date" min="{{getCurrentDate 'YYYY-MM-DD'}}" class="form-grid__field" value="{{formatDate donedate 'YYYY-MM-DD'}}">
+                                            <input id="finished-{{id}}" name="finished" type="hidden" value="{{finished}}">
                                         </div>
                                         <div class="form-row ">
                                             <div class="form-grid__field button-wrapper">
                                                 <button type="reset" class="btn btn-primary">Cancel</button>
-                                                <button id="form-submit" type="submit" class="btn btn-primary">Save</button>
+                                                <button id="form-submit" type="submit" class="btn btn-primary" data-save="submit">Save</button>
                                             </div>
                                         </div>
 
@@ -69,9 +74,5 @@
                     </div>
                 </footer>
         </div>
-        <script src="node_modules/handlebars/dist/handlebars.min.js" defer></script>
-        <script src="js/handlebarshelpers.js" defer></script>
-        <script src="js/utils.js" defer></script>
-        <script src="js/createnote.js" defer></script>
     </body>
 </html>
