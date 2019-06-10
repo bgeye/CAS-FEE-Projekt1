@@ -5,12 +5,11 @@ export class StyleSwitcher {
     }
 
     setStyle() {
-
         if (this.getLocalStorage() !== null) {
-            const localStorageStyle = this.getStyleFromLocalStorage();
 
+            const localStorageStyle = this.getStyleFromLocalStorage();
             document.body.className = localStorageStyle;
-            if(this.styleSwitch) {
+            if (this.styleSwitch) {
                 this.styleSwitch.value = localStorageStyle;
             }
         }

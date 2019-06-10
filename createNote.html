@@ -13,7 +13,7 @@
         <title>Notes</title>
         <script src="node_modules/moment/min/moment-with-locales.min.js"></script>
         <script src="node_modules/handlebars/dist/handlebars.min.js" defer></script>
-        <script src="js/handlebarshelpers.js" defer></script>
+        <script src="scripts/handlebarshelpers.js" defer></script>
         <script src="scripts/createnote-bootstrapper.js" type="module" defer></script>
     </head>
     <body>
@@ -28,7 +28,7 @@
                                     <form action="" class="form-grid" id="form-note">
                                         <div class="form-row">
                                             <label for="title" class="form-grid__label"><small>Titel</small> </label>
-                                            <input type="text" name="title" id="title" class="form-grid__field" value="{{title}}" required>
+                                            <input type="text" name="title" maxlength="40" id="title" class="form-grid__field" value="{{title}}" required>
                                         </div>
                                         <div class="form-row">
                                             <label for="description" class="form-grid__label"><small>Beschreibung</small></label>

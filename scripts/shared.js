@@ -1,9 +1,7 @@
-/**
- * array of notes (static)
- */
-
 export class Shared {
     constructor () {
+
+        //static notes
         this.notesOrigin = [
             {
                 id: "1",
@@ -62,116 +60,12 @@ export class Shared {
         ];
     }
 
-
-    getNoteById(noteId) {
-        const notes = this.getNotes();
-        let noteItem = notes.find(note => note.id === noteId);
-
-        return noteItem
-    }
-
-    getNoteIndexById(noteId) {
-        const notes = this.getNotes();
-        let noteIndex = notes.findIndex(note => note.id === noteId);
-        return noteIndex
-    }
-
-
-    //only temporary
-    createNewId() {
-        let notes = this.getNotes();
-        notes = notes.length + 1;
-        return notes.toString();
-    }
-
-
     getUrlId() {
         const queryString = window.location.search;
         const searchParams = new URLSearchParams(queryString);
-        const id = searchParams.get('id');
+        const urlId = searchParams.get('id');
 
-        return id
-    }
-
-
-    getNotes() {
-
-        let noteItems = JSON.parse(localStorage.getItem('notes'));
-        if (!noteItems) {
-            localStorage.setItem('notes', JSON.stringify(this.notesOrigin)); //set static array from this file
-            noteItems = JSON.parse(localStorage.getItem('notes'));
-        }
-
-        return noteItems
-    }
-
-    save(e) {
-        const clickedBtn = e.target.dataset.save;
-        if (clickedBtn === 'submit') {
-
-            const noteTitle = document.querySelector('#title').value;
-            const noteDescription = document.querySelector('#description').value;
-            const noteImportance = document.querySelector('input[name="importance"]:checked').value;
-            const noteDoneDate = new Date(document.querySelector('#donedate').value);
-            const noteFinished = (document.querySelector('input[name="finished"]').value === 'true') ? true : false;
-
-            if (this.getUrlId()) {
-                e.preventDefault();
-                const noteId = this.getUrlId();
-
-                this.updateNote(noteTitle, noteDescription, noteImportance, noteDoneDate, noteFinished, noteId);
-
-            } else {
-                e.preventDefault();
-                this.createNote(noteTitle, noteDescription, noteImportance, noteDoneDate);
-            }
-        }
-    }
-
-    updateNote(noteTitle, noteDescription, noteImportance, noteDoneDate, noteItemFinished = false, noteItemId) {
-
-        const noteId = noteItemId;
-        const noteIndex = this.getNoteIndexById(noteId);
-        const noteItem = this.getNoteById(noteId);
-
-        noteItem.title = noteTitle;
-        noteItem.description = noteDescription;
-        noteItem.importance = noteImportance;
-        noteItem.doneDate = noteDoneDate;
-        noteItem.finished = noteItemFinished;
-
-
-        const notes = this.getNotes();
-        notes[noteIndex] = noteItem;
-        localStorage.setItem('notes', JSON.stringify(notes));
-        const location = window.location;
-        if (location !== 'index.html') {
-            window.location.replace("index.html");
-        }
-
-    }
-
-    createNote(noteTitle, noteDescription, noteImportance, noteDoneDate) {
-        const newId = this.createNewId();
-        const finished = false;
-        const createDate = String(Date.now());
-
-        const newNote = {
-            id: newId,
-            title: noteTitle,
-            description: noteDescription,
-            importance: noteImportance,
-            doneDate: noteDoneDate,
-            createDate: createDate,
-            finished: finished
-
-        };
-
-
-        const notes = this.getNotes();
-        notes.push(newNote);
-        localStorage.setItem('notes', JSON.stringify(notes));
-        window.location.replace("index.html");
+        return urlId
     }
 }
 

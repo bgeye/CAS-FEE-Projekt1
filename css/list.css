@@ -4,6 +4,7 @@
 
 .notelist {
     position: relative;
+    max-width: 768px;
 }
 
 .notelist:before {

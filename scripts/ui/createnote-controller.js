@@ -1,8 +1,9 @@
 
 export class CreateNoteController {
-    constructor (shared, styleSwitcher) {
+    constructor (notesStorage, shared, styleSwitcher) {
 
         this.shared = shared;
+        this.notesStorage = notesStorage;
         this.styleSwitcher = styleSwitcher;
 
         //this.formNote = document.querySelector('#form-note');
@@ -10,23 +11,23 @@ export class CreateNoteController {
         this.templateSource = document.querySelector('#note-item-edit-template').innerHTML;
         this.template = Handlebars.compile(this.templateSource);
 
-        this.noteItem = this.shared.getNoteById(this.shared.getUrlId());
+        this.noteItem = this.notesStorage.getNoteById(this.shared.getUrlId());
     }
 
     initEventHandlers () {
         //to dirty? selector(handlebar template) not available while constructor is executed...
         const formNote = document.querySelector('#form-note');
-        formNote.addEventListener('click', (event) => {this.shared.save(event);});
+        formNote.addEventListener('click', (event) => {this.notesStorage.save(event);});
     }
 
-    setValuesToEdit(notes) {
+    renderForm(notes) {
 
         const formContainer = document.querySelector('#form-container');
         formContainer.innerHTML = this.template(notes);
     }
 
     createNoteAction() {
-        this.setValuesToEdit(this.noteItem);
+        this.renderForm(this.noteItem);
         this.initEventHandlers();
         this.styleSwitcher.setStyle();
     }
