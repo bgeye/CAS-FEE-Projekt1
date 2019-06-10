@@ -14,8 +14,7 @@
         <script src="node_modules/moment/min/moment-with-locales.min.js"></script>
         <script src="node_modules/handlebars/dist/handlebars.min.js" defer></script>
         <script src="js/handlebarshelpers.js" defer></script>
-        <script src="js/utils.js" defer></script>
-        <script src="js/createnote.js" defer></script>
+        <script src="scripts/createnote-bootstrapper.js" type="module" defer></script>
     </head>
     <body>
         <div class="page-content">
@@ -29,30 +28,30 @@
                                     <form action="" class="form-grid" id="form-note">
                                         <div class="form-row">
                                             <label for="title" class="form-grid__label"><small>Titel</small> </label>
-                                            <input type="text" name="title" id="title" class="form-grid__field" value="{{title}}">
+                                            <input type="text" name="title" id="title" class="form-grid__field" value="{{title}}" required>
                                         </div>
                                         <div class="form-row">
                                             <label for="description" class="form-grid__label"><small>Beschreibung</small></label>
-                                            <textarea id="description" name="description" rows="5" cols="33"  class="form-grid__field">{{description}}</textarea>
+                                            <textarea id="description" name="description" rows="5" cols="33"  class="form-grid__field" required>{{description}}</textarea>
                                         </div>
                                         <div class="form-row">
                                             <label class="form-grid__label" for="importance"><small>Wichtigkeit</small></label>
                                             <fieldset class="importance-wrapper" class="form-grid__field" id="importance">
-                                                <input class="importance-wrapper__field" id="importance-1" type="radio" name="importance" value="1" {{checkImportance 1 importance}}>
+                                                <input class="importance-wrapper__field" id="importance-1" type="radio" name="importance" value="1" {{checkImportance 1 importance}} required>
                                                 <label for="importance-1"></label>
-                                                <input class="importance-wrapper__field" id="importance-2" type="radio" name="importance" value="2" {{checkImportance 2 importance}}>
+                                                <input class="importance-wrapper__field" id="importance-2" type="radio" name="importance" value="2" {{checkImportance 2 importance}} required>
                                                 <label for="importance-2"></label>
-                                                <input class="importance-wrapper__field" id="importance-3" type="radio" name="importance" value="3" {{checkImportance 3 importance}}>
+                                                <input class="importance-wrapper__field" id="importance-3" type="radio" name="importance" value="3" {{checkImportance 3 importance}} required>
                                                 <label for="importance-3"></label>
-                                                <input class="importance-wrapper__field" id="importance-4" type="radio" name="importance" value="4" {{checkImportance 4 importance}}>
+                                                <input class="importance-wrapper__field" id="importance-4" type="radio" name="importance" value="4" {{checkImportance 4 importance}} required>
                                                 <label for="importance-4"></label>
-                                                <input class="importance-wrapper__field" id="importance-5" type="radio" name="importance" value="5" {{checkImportance 5 importance}}>
+                                                <input class="importance-wrapper__field" id="importance-5" type="radio" name="importance" value="5" {{checkImportance 5 importance}} required>
                                                 <label for="importance-5"></label>
                                             </fieldset>
                                         </div>
                                         <div class="form-row">
                                             <label for="donedate" class="form-grid__label"><small>Erledigt bis</small></label>
-                                            <input id="donedate" type="date" min="{{getCurrentDate 'YYYY-MM-DD'}}" class="form-grid__field" value="{{formatDate donedate 'YYYY-MM-DD'}}">
+                                            <input id="donedate" type="date" min="{{getCurrentDate 'YYYY-MM-DD'}}" class="form-grid__field" value="{{formatDate donedate 'YYYY-MM-DD'}}" required>
                                             <input id="finished-{{id}}" name="finished" type="hidden" value="{{finished}}">
                                         </div>
                                         <div class="form-row ">
@@ -61,8 +60,6 @@
                                                 <button id="form-submit" type="submit" class="btn btn-primary" data-save="submit">Save</button>
                                             </div>
                                         </div>
-
-
                                     </form>
                                 </div>
                             </div>
