@@ -1,6 +1,6 @@
 import {CreateNoteController} from './ui/createnote-controller.js';
 import {Shared} from "./shared.js";
-import {NotesStorage} from "./dl/notes-storage.js";
+import {NotesStorage} from "./bl/notes-storage.js";
 import {StyleSwitcher} from "./styleswitch.js";
 
 class Bootstrapper {

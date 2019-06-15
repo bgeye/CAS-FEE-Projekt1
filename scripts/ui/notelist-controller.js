@@ -8,52 +8,49 @@ export class NoteListController {
         this.templateSource = document.querySelector('#note-item-template').innerHTML;
         this.template = Handlebars.compile(this.templateSource);
 
-        //get elements to set eventListeners
-        this.filterFinishDate = document.querySelector('#filter-finish-date');
-        this.filterCreateDate = document.querySelector('#filter-create-date');
-        this.filterImportance = document.querySelector('#filter-importance');
-        this.filterFinished = document.querySelector('#filter-finished');
+        this.filterContainer = document.querySelector('#filter-container');
         this.listContainer = document.querySelector('#list-container');
-        this.styleSwitch = document.querySelector('#styleswitch');
 
-        //get all notes
-        this.allNotes = this.notesStorage.getNotes();
+        this.styleSwitch = document.querySelector('#styleswitch');
 
     }
 
     initEventHandlers() {
-        this.filterFinishDate.addEventListener('click', () => {
-            this.renderNotes(this.notesStorage.orderByFinishDate(this.allNotes));
+        this.filterContainer.addEventListener('click', (event) => {
+            if (Boolean(event.target.dataset.filter) === true) {
+                const filterBy = event.target.dataset.filterBy;
+                const filterType = event.target.dataset.filterType;
+                this.renderNotes(
+                    this.notesStorage.getNotes(filterBy, filterType)
+                );
+            }
         });
-        this.filterCreateDate.addEventListener('click', () => {
-            this.renderNotes(this.notesStorage.orderByCreateDate(this.allNotes));
-        });
-        this.filterImportance.addEventListener('click', () => {
-            this.renderNotes(this.notesStorage.orderByImportance(this.allNotes));
-        });
-        this.filterFinished.addEventListener('click', () => {
-            this.renderNotes(this.notesStorage.showFinished(this.allNotes));
-        });
+
         this.listContainer.addEventListener('change', (event) => {
-            this.notesStorage.setStatus(event);
+            const noteCheckbox = event.target.dataset.noteCheckbox;
+            if (noteCheckbox === 'finished') {
+                this.notesStorage.setStatus(event);
+            }
         });
+
         this.styleSwitch.addEventListener('change', (event) => {
             this.styleSwitcher.switchStyle(event);
         });
     }
 
     renderNotes(notes) {
-        if(notes.length > 0) {
+        if (notes.length > 0 === true) {
             const noteContainer = document.querySelector('#list-container');
             noteContainer.innerHTML = this.template(notes);
         } else {
-            alert('no items found!');
+            const noteContainer = document.querySelector('#list-container');
+            noteContainer.innerHTML = 'No items found';
         }
     }
 
     noteListAction() {
         this.initEventHandlers();
-        this.renderNotes(this.allNotes);
+        this.renderNotes(this.notesStorage.getNotes());
         this.styleSwitcher.setStyle();
     }
 }

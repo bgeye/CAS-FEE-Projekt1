@@ -1,6 +1,5 @@
-
 export class CreateNoteController {
-    constructor (notesStorage, shared, styleSwitcher) {
+    constructor(notesStorage, shared, styleSwitcher) {
 
         this.shared = shared;
         this.notesStorage = notesStorage;
@@ -14,10 +13,26 @@ export class CreateNoteController {
         this.noteItem = this.notesStorage.getNoteById(this.shared.getUrlId());
     }
 
-    initEventHandlers () {
+    initEventHandlers() {
         //to dirty? selector(handlebar template) not available while constructor is executed...
         const formNote = document.querySelector('#form-note');
-        formNote.addEventListener('click', (event) => {this.notesStorage.save(event);});
+        formNote.addEventListener('click', (event) => {
+            const clickedBtn = event.target.dataset.save;
+
+            if (clickedBtn === 'submit') {
+                this.submitNote(event);
+            }
+        });
+    }
+
+    submitNote(event) {
+        const noteTitle = document.querySelector('#title').value || '';
+        const noteDescription = document.querySelector('#description').value || '';
+        const noteImportance = document.querySelector('input[name="importance"]:checked').value;
+        const noteDoneDate = new Date(document.querySelector('#donedate').value);
+        const noteFinished = (document.querySelector('input[name="finished"]').value === "true");
+        const notes = this.notesStorage.addNote(event, noteTitle, noteDescription, noteImportance, noteDoneDate, noteFinished);
+        this.notesStorage.saveNotes(notes);
     }
 
     renderForm(notes) {
