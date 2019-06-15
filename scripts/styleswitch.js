@@ -1,16 +1,15 @@
 export class StyleSwitcher {
     constructor() {
-        this.styleSwitch = document.querySelector('#styleswitch');
 
     }
 
-    setStyle() {
+    setStyle(styleSwitch) {
         if (this.getLocalStorage() !== null) {
 
             const localStorageStyle = this.getStyleFromLocalStorage();
             document.body.className = localStorageStyle;
-            if (this.styleSwitch) {
-                this.styleSwitch.value = localStorageStyle;
+            if (styleSwitch) {
+                styleSwitch.value = localStorageStyle;
             }
         }
     }

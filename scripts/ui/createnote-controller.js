@@ -11,6 +11,8 @@ export class CreateNoteController {
         this.template = Handlebars.compile(this.templateSource);
 
         this.noteItem = this.notesStorage.getNoteById(this.shared.getUrlId());
+
+        this.styleSwitch = document.querySelector('#styleswitch');
     }
 
     initEventHandlers() {
@@ -44,6 +46,6 @@ export class CreateNoteController {
     createNoteAction() {
         this.renderForm(this.noteItem);
         this.initEventHandlers();
-        this.styleSwitcher.setStyle();
+        this.styleSwitcher.setStyle(this.styleSwitch);
     }
 }

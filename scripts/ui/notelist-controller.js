@@ -51,6 +51,6 @@ export class NoteListController {
     noteListAction() {
         this.initEventHandlers();
         this.renderNotes(this.notesStorage.getNotes());
-        this.styleSwitcher.setStyle();
+        this.styleSwitcher.setStyle(this.styleSwitch);
     }
 }
