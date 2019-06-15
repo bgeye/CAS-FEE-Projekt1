@@ -1,23 +1,18 @@
-/**
-    variables.css
- */
-
-
-/*
-colors
-https://www.december.com/html/spec/color0.html
-
-*/
-
 body {
     --color-white: #fff;
     --color-black: #000;
 
     --color-gray-30: #5a6268;
     --color-gray-20: #6c757d;
-    --color-lightgray: lightgray;
-    --color-gray-92: #EBEBEB;
-    --color-gray-95: #F2F2F2;
-    --color-gray-98: #FAFAFA;
+    --color-gray-90: #d3d3d3;
+    --color-gray-92: #ebebeb;
+    --color-gray-95: #f2f2f2;
+    --color-gray-98: #fafafa;
 
+    /* theme retro */
+    --color-retro-turqoise: #7dbea5;
+    --color-retro-light-yellow: #f1e0b1;
+    --color-retro-dark-yellow: #ee9d31;
+    --color-retro-orange: #f26c1a;
+    --color-retro-brown: #5a392b;
 }

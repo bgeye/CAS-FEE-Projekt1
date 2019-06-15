@@ -17,11 +17,11 @@ input[type=checkbox] + label::before {
     width: 20px;
     height: 20px;
     background: var(--color-white);
-    border: 1px solid var(--color-lightgray);
+    border: 1px solid var(--color-gray-90);
 }
 
 input[type=checkbox]:hover + label::before {
-    background: var(--color-lightgray);
+    background: var(--color-gray-90);
 }
 
 input[type=checkbox]:focus + label::before {
@@ -29,17 +29,7 @@ input[type=checkbox]:focus + label::before {
 }
 
 input[type=checkbox]:checked + label::before {
-    background: var(--color-lightgray);
-}
-
-input[type=checkbox]:disabled + label {
-    color: #b8b8b8;
-    cursor: auto;
-}
-
-input[type=checkbox]:disabled + label::before {
-    box-shadow: none;
-    background: #ddd;
+    background: var(--color-gray-90);
 }
 
 input[type=checkbox]:checked + label::after {
@@ -47,14 +37,14 @@ input[type=checkbox]:checked + label::after {
     position: absolute;
     left: 5px;
     top: 9px;
-    background: white;
+    background: var(--color-white);
     width: 2px;
     height: 2px;
-    box-shadow: 2px 0 0 white,
-    4px 0 0 white,
-    4px -2px 0 white,
-    4px -4px 0 white,
-    4px -6px 0 white,
-    4px -8px 0 white;
+    box-shadow: 2px 0 0 var(--color-white),
+    4px 0 0 var(--color-white),
+    4px -2px 0 var(--color-white),
+    4px -4px 0 var(--color-white),
+    4px -6px 0 var(--color-white),
+    4px -8px 0 var(--color-white);
     transform: rotate(45deg);
 }

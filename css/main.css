@@ -1,7 +1,3 @@
-/**
-    main.css
- */
-
 @import 'sanitize.css';
 @import 'variables.css';
 @import 'base.css';
@@ -12,9 +8,10 @@
 @import './partials/button.css';
 @import './partials/select.css';
 @import './partials/checkbox.css';
+@import './partials/radio.css';
 
-/* theme-unicorn */
-@import './themes/theme-unicorn.css';
+/* theme-retro */
+@import './themes/theme-retro.css';
 
 /* node css includes */
 @import '../node_modules/font-awesome/css/font-awesome.min.css';
