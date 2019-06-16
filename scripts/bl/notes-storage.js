@@ -1,19 +1,13 @@
 export class NotesStorage {
-    constructor(shared) {
+    constructor(shared, dataService) {
         this.shared = shared;
-
+        this.dataService = dataService;
     }
 
     getNotes(orderBy, filter) {
 
         let notesFiltered;
-
-        let noteItems = JSON.parse(localStorage.getItem('notes'));
-        if (!noteItems) {
-            localStorage.setItem('notes', JSON.stringify(this.shared.notesOrigin));
-            noteItems = JSON.parse(localStorage.getItem('notes'));
-        }
-
+        const noteItems = this.dataService.getNoteData();
         switch (filter) {
             case 'sort':
                 notesFiltered = this.filterSort(noteItems, orderBy);
@@ -28,10 +22,10 @@ export class NotesStorage {
     }
 
 
-
-
     saveNotes(notes) {
-        localStorage.setItem('notes', JSON.stringify(notes));
+        const dataType = 'notes';
+        this.dataService.updateData(dataType, notes);
+        //localStorage.setItem('notes', JSON.stringify(notes));
         this.changeUrlLocation();
     }
 

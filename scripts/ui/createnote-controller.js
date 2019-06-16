@@ -10,7 +10,9 @@ export class CreateNoteController {
         this.templateSource = document.querySelector('#note-item-edit-template').innerHTML;
         this.template = Handlebars.compile(this.templateSource);
 
-        this.noteItem = this.notesStorage.getNoteById(this.shared.getUrlId());
+        if(this.shared.getUrlId()) {
+            this.noteItem = this.notesStorage.getNoteById(this.shared.getUrlId());
+        }
 
         this.styleSwitch = document.querySelector('#styleswitch');
     }
@@ -44,6 +46,9 @@ export class CreateNoteController {
     }
 
     createNoteAction() {
+
+
+
         this.renderForm(this.noteItem);
         this.initEventHandlers();
         this.styleSwitcher.setStyle(this.styleSwitch);

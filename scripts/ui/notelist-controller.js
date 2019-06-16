@@ -4,7 +4,6 @@ export class NoteListController {
         this.notesStorage = notesStorage;
         this.styleSwitcher = styleSwitcher;
 
-        //handlebars source
         this.templateSource = document.querySelector('#note-item-template').innerHTML;
         this.template = Handlebars.compile(this.templateSource);
 
@@ -16,11 +15,14 @@ export class NoteListController {
     }
 
     initEventHandlers() {
+
         this.filterContainer.addEventListener('click', (event) => {
             if (Boolean(event.target.dataset.filter) === true) {
+
                 const filterBy = event.target.dataset.filterBy;
                 const filterType = event.target.dataset.filterType;
                 this.renderNotes(
+
                     this.notesStorage.getNotes(filterBy, filterType)
                 );
             }

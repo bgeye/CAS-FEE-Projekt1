@@ -1,10 +1,11 @@
 export class StyleSwitcher {
-    constructor() {
-
+    constructor(dataService) {
+        this.dataService = dataService;
+        this.dataType = 'style';
     }
 
     setStyle(styleSwitch) {
-        if (this.getLocalStorage() !== null) {
+        if (this.dataService.getLocalData(this.dataType) !== null) {
 
             const localStorageStyle = this.getStyleFromLocalStorage();
             document.body.className = localStorageStyle;
@@ -21,28 +22,18 @@ export class StyleSwitcher {
     }
 
     saveStyle() {
-        const style = {
+        const styleTheme = {
             name: document.body.className
         };
 
         const styles = [];
 
-        styles.push(style);
-        this.setLocalStorage(styles);
-        this.getStyleFromLocalStorage();
+        styles.push(styleTheme);
+        this.dataService.updateData(this.dataType,styles);
     }
 
     getStyleFromLocalStorage() {
-        const style = this.getLocalStorage();
 
-        return style[0].name
-    }
-
-    setLocalStorage(styles) {
-        return localStorage.setItem('style', JSON.stringify(styles));
-    }
-
-    getLocalStorage() {
-        return JSON.parse(localStorage.getItem('style'));
+        return this.dataService.getLocalData(this.dataType)[0].name;
     }
 }
