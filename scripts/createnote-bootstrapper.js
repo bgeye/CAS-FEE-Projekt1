@@ -2,7 +2,7 @@ import {CreateNoteController} from './ui/createnote-controller.js';
 import {getUrlId} from "./utils/utils.js";
 import {DataService} from "./dl/data-service.js";
 import {NotesStorage} from "./bl/notes-storage.js";
-import {StyleSwitcher} from "./styleswitch.js";
+import {StyleSwitcher} from "./ui/styleswitch.js";
 
 class CreateNoteBootstrapper {
     static start() {

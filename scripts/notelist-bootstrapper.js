@@ -3,7 +3,7 @@ import {NotesStorage} from "./bl/notes-storage.js";
 import {initialData} from "./misc/initialdata.js";
 import {getUrlId} from "./utils/utils.js";
 import {DataService} from "./dl/data-service.js";
-import {StyleSwitcher} from './styleswitch.js';
+import {StyleSwitcher} from './ui/styleswitch.js';
 
 class NoteListBootstrapper {
     static start() {
