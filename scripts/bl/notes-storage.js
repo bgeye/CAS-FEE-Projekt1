@@ -1,7 +1,9 @@
 export class NotesStorage {
-    constructor(shared, dataService) {
-        this.shared = shared;
+    constructor(getUrlId, dataService) {
+
+        this.getUrlId = getUrlId;
         this.dataService = dataService;
+
     }
 
     getNotes(orderBy, filter) {
@@ -25,7 +27,6 @@ export class NotesStorage {
     saveNotes(notes) {
         const dataType = 'notes';
         this.dataService.updateData(dataType, notes);
-        //localStorage.setItem('notes', JSON.stringify(notes));
         this.changeUrlLocation();
     }
 
@@ -72,10 +73,9 @@ export class NotesStorage {
 
     addNote(event, noteTitle, noteDescription, noteImportance, noteDoneDate, noteFinished) {
 
-        if (this.shared.getUrlId()) {
+        if(this.getUrlId()){
             event.preventDefault();
-            const noteId = this.shared.getUrlId();
-
+            const noteId = this.getUrlId();
             return this.updateNote(noteTitle, noteDescription, noteImportance, noteDoneDate, noteFinished, noteId);
 
         } else {

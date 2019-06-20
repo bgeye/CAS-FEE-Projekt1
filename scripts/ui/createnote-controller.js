@@ -1,7 +1,8 @@
 export class CreateNoteController {
-    constructor(notesStorage, shared, styleSwitcher) {
+    constructor(notesStorage, getUrlId, styleSwitcher) {
 
-        this.shared = shared;
+        this.getUrlId = getUrlId;
+
         this.notesStorage = notesStorage;
         this.styleSwitcher = styleSwitcher;
 
@@ -10,8 +11,8 @@ export class CreateNoteController {
         this.templateSource = document.querySelector('#note-item-edit-template').innerHTML;
         this.template = Handlebars.compile(this.templateSource);
 
-        if(this.shared.getUrlId()) {
-            this.noteItem = this.notesStorage.getNoteById(this.shared.getUrlId());
+        if(this.getUrlId()) {
+            this.noteItem = this.notesStorage.getNoteById(this.getUrlId());
         }
 
         this.styleSwitch = document.querySelector('#styleswitch');

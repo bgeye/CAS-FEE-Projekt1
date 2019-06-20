@@ -1,7 +1,7 @@
 export class DataService {
-    constructor(shared) {
+    constructor(initialData) {
 
-        this.shared = shared;
+        this.initialData = initialData;
 
     }
 
@@ -9,7 +9,7 @@ export class DataService {
         const dataTypeNotes = 'notes';
         let notes = this.getLocalData(dataTypeNotes);
         if (!notes) {
-            this.updateData(dataTypeNotes, this.shared.notesOrigin);
+            this.updateData(dataTypeNotes, this.initialData);
             notes = this.getLocalData(dataTypeNotes);
         }
 
