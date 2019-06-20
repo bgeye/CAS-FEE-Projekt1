@@ -25,7 +25,9 @@ export class CreateNoteController {
             const clickedBtn = event.target.dataset.save;
 
             if (clickedBtn === 'submit') {
+                event.preventDefault();
                 this.submitNote(event);
+
 
             }
         });

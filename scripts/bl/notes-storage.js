@@ -63,12 +63,10 @@ export class NotesStorage {
     addNote(event, noteTitle, noteDescription, noteImportance, noteDoneDate, noteFinished) {
 
         if(this.getUrlId()){
-            event.preventDefault();
             const noteId = this.getUrlId();
             return this.updateNote(noteTitle, noteDescription, noteImportance, noteDoneDate, noteFinished, noteId);
 
         } else {
-            event.preventDefault();
             return this.createNote(noteTitle, noteDescription, noteImportance, noteDoneDate);
         }
     }
