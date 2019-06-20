@@ -11,7 +11,7 @@ export class CreateNoteController {
         this.templateSource = document.querySelector('#note-item-edit-template').innerHTML;
         this.template = Handlebars.compile(this.templateSource);
 
-        if(this.getUrlId()) {
+        if (this.getUrlId()) {
             this.noteItem = this.notesStorage.getNoteById(this.getUrlId());
         }
 
@@ -26,6 +26,7 @@ export class CreateNoteController {
 
             if (clickedBtn === 'submit') {
                 this.submitNote(event);
+
             }
         });
     }
@@ -38,6 +39,12 @@ export class CreateNoteController {
         const noteFinished = (document.querySelector('input[name="finished"]').value === "true");
         const notes = this.notesStorage.addNote(event, noteTitle, noteDescription, noteImportance, noteDoneDate, noteFinished);
         this.notesStorage.saveNotes(notes);
+        this.changeUrlLocation();
+    }
+
+    changeUrlLocation() {
+        const location = window.location;
+        window.location.replace("index.html");
     }
 
     renderForm(notes) {
@@ -47,7 +54,6 @@ export class CreateNoteController {
     }
 
     createNoteAction() {
-
 
 
         this.renderForm(this.noteItem);

@@ -3,7 +3,6 @@ export class NotesStorage {
 
         this.getUrlId = getUrlId;
         this.dataService = dataService;
-
     }
 
     getNotes(orderBy, filter) {
@@ -23,18 +22,9 @@ export class NotesStorage {
         }
     }
 
-
     saveNotes(notes) {
         const dataType = 'notes';
         this.dataService.updateData(dataType, notes);
-        this.changeUrlLocation();
-    }
-
-    changeUrlLocation() {
-        const location = window.location;
-        if (location !== 'index.html') {
-            window.location.replace("index.html");
-        }
     }
 
     getNoteIndexById(noteId) {
@@ -42,7 +32,6 @@ export class NotesStorage {
         let noteIndex = notes.findIndex(note => note.id === noteId);
         return noteIndex;
     }
-
 
     //only temporary
     createNewId() {
