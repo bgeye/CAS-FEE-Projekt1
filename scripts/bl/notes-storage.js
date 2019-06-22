@@ -1,7 +1,7 @@
 export class NotesStorage {
-    constructor(getUrlId, dataService) {
+    constructor(urlId, dataService) {
 
-        this.getUrlId = getUrlId;
+        this.getUrlId = urlId;
         this.dataService = dataService;
     }
 
@@ -67,6 +67,7 @@ export class NotesStorage {
             return this.updateNote(noteTitle, noteDescription, noteImportance, noteDoneDate, noteFinished, noteId);
 
         } else {
+
             return this.createNote(noteTitle, noteDescription, noteImportance, noteDoneDate);
         }
     }

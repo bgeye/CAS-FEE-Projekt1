@@ -1,12 +1,10 @@
 export class CreateNoteController {
-    constructor(notesStorage, getUrlId, styleSwitcher) {
+    constructor(notesStorage, urlId, styleSwitcher) {
 
-        this.getUrlId = getUrlId;
+        this.getUrlId = urlId;
 
         this.notesStorage = notesStorage;
         this.styleSwitcher = styleSwitcher;
-
-        //this.formNote = document.querySelector('#form-note');
 
         this.templateSource = document.querySelector('#note-item-edit-template').innerHTML;
         this.template = Handlebars.compile(this.templateSource);
@@ -19,17 +17,10 @@ export class CreateNoteController {
     }
 
     initEventHandlers() {
-        //to dirty? selector(handlebar template) not available while constructor is executed...
         const formNote = document.querySelector('#form-note');
-        formNote.addEventListener('click', (event) => {
-            const clickedBtn = event.target.dataset.save;
-
-            if (clickedBtn === 'submit') {
+        formNote.addEventListener('submit', (event) => {
                 event.preventDefault();
                 this.submitNote(event);
-
-
-            }
         });
     }
 
@@ -45,8 +36,8 @@ export class CreateNoteController {
     }
 
     changeUrlLocation() {
-        const location = window.location;
-        window.location.replace("index.html");
+        const targetLocation = 'index.html';
+        window.location.replace(targetLocation);
     }
 
     renderForm(notes) {
