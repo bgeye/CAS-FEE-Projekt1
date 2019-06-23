@@ -53,9 +53,9 @@
                                 <small>{{formatDate doneDate 'LL'}}</small>
                             </div>
                             <div class="item__finished">
-                                <input type="checkbox" name="finished" id="finished-{{id}}" data-note-id="{{id}}" data-note-checkbox="finished"
+                                <input type="checkbox" name="finished" id="finished-{{_id}}" data-note-id="{{id}}" data-note-checkbox="finished"
                                        {{isFinished finished}}>
-                                <label for="finished-{{id}}">
+                                <label for="finished-{{_id}}">
                                     <small>Finished</small>
                                 </label>
                             </div>
@@ -77,7 +77,7 @@
                             </div>
                         </div>
                         <div class="item__right">
-                            <a href="createNote.html?id={{id}}" id="#editItem" class="btn"><i class="fa fa-pencil"></i></a>
+                            <a href="createNote.html?id={{_id}}" id="#editItem" class="btn"><i class="fa fa-pencil"></i></a>
                         </div>
                     </section>
                     {{/each}}

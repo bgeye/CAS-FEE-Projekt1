@@ -1,17 +1,21 @@
 export class NotesStorage {
-    constructor(urlId, dataService) {
-
+    //constructor(urlId, dataService) {
+    constructor(urlId, noteService) {
         this.getUrlId = urlId;
-        this.dataService = dataService;
+        //this.dataService = dataService;
+        this.noteService = noteService;
     }
 
-    getNotes(orderBy, filter) {
+    async getNotes(orderBy, filter) {
 
         let notesFiltered;
-        const noteItems = this.dataService.getNoteData();
+        //const noteItems = this.dataService.getNoteData();
+        const noteItems = await this.noteService.getAllNotes();
+        console.log('in noteStorage'+noteItems);
         switch (filter) {
             case 'sort':
                 notesFiltered = this.filterSort(noteItems, orderBy);
+                console.log(notesFiltered);
                 return notesFiltered;
             case 'criteria':
                 notesFiltered = this.filterByCriteria(noteItems, orderBy);

@@ -1,6 +1,6 @@
 import {CreateNoteController} from './ui/createnote-controller.js';
 import {urlId} from "./utils/utils.js";
-import {DataService} from "./dl/data-service.js";
+import {DataService} from "./services/data-service.js";
 import {NotesStorage} from "./bl/notes-storage.js";
 import {StyleSwitcher} from "./ui/styleswitch.js";
 

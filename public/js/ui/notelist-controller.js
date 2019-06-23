@@ -1,8 +1,9 @@
-export class NoteListController {
-    constructor(notesStorage, styleSwitcher) {
 
+export class NoteListController {
+    constructor(notesStorage, styleSwitcher, noteService) {
         this.notesStorage = notesStorage;
         this.styleSwitcher = styleSwitcher;
+        this.noteService = noteService;
 
         this.templateSource = document.querySelector('#note-item-template').innerHTML;
         this.template = Handlebars.compile(this.templateSource);
@@ -21,10 +22,17 @@ export class NoteListController {
 
                 const filterBy = event.target.dataset.filterBy;
                 const filterType = event.target.dataset.filterType;
-                this.renderNotes(
+
+                async function() => {await this.renderNotes(
 
                     this.notesStorage.getNotes(filterBy, filterType)
-                );
+                )};
+
+
+
+
+
+
             }
         });
 
@@ -40,19 +48,26 @@ export class NoteListController {
         });
     }
 
-    renderNotes(notes) {
+
+
+
+
+
+    async renderNotes(notes) {
         if (notes.length > 0 === true) {
+
             const noteContainer = document.querySelector('#list-container');
-            noteContainer.innerHTML = this.template(notes);
+            noteContainer.innerHTML = await this.template(notes);
         } else {
             const noteContainer = document.querySelector('#list-container');
-            noteContainer.innerHTML = 'No items found';
+            noteContainer.innerHTML = await 'No items found';
         }
     }
 
-    noteListAction() {
+    async noteListAction() {
         this.initEventHandlers();
-        this.renderNotes(this.notesStorage.getNotes());
+        //this.renderNotes(this.notesStorage.getNotes());
+        await this.renderNotes(await this.noteService.getAllNotes());
         this.styleSwitcher.setStyle(this.styleSwitch);
     }
 }
