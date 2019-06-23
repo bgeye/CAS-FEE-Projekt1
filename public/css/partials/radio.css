@@ -1,0 +1,27 @@
+input.importance-wrapper__field {
+    display: none;
+}
+
+.importance-wrapper label:before {
+    font-family: FontAwesome;
+    content: '\f005';
+    padding: 5px;
+    font-size: 1.5rem;
+    transition: all .25s;
+    cursor: pointer;
+}
+
+input.importance-wrapper__field + label::before {
+    color: var(--color-gray-20);
+}
+
+input.importance-wrapper__field:checked ~ label::before {
+
+    color: var(--color-gray-92);
+}
+
+input.importance-wrapper__field:checked + label::before {
+
+    color: var(--color-gray-20);
+
+}

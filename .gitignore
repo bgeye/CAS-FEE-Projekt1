@@ -3,5 +3,4 @@
 node_modules
 .eslintrc
 package-lock.json
-/dist
-/Public
+*.db
