@@ -23,16 +23,10 @@ export class NoteListController {
                 const filterBy = event.target.dataset.filterBy;
                 const filterType = event.target.dataset.filterType;
 
-                async function() => {await this.renderNotes(
+                this.renderNotes(
 
                     this.notesStorage.getNotes(filterBy, filterType)
-                )};
-
-
-
-
-
-
+                )
             }
         });
 
@@ -47,11 +41,6 @@ export class NoteListController {
             this.styleSwitcher.switchStyle(event);
         });
     }
-
-
-
-
-
 
     async renderNotes(notes) {
         if (notes.length > 0 === true) {
