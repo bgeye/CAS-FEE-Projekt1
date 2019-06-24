@@ -17,46 +17,55 @@ export class NoteListController {
 
     initEventHandlers() {
 
-        this.filterContainer.addEventListener('click', (event) => {
-            if (Boolean(event.target.dataset.filter) === true) {
-
-                const filterBy = event.target.dataset.filterBy;
-                const filterType = event.target.dataset.filterType;
-
-                this.renderNotes(
-
-                    this.notesStorage.getNotes(filterBy, filterType)
-                )
-            }
+        this.filterContainer.addEventListener('click', async (event) => {
+            await this.filterNotes(event);
         });
 
-        this.listContainer.addEventListener('change', (event) => {
-            const noteCheckbox = event.target.dataset.noteCheckbox;
-            if (noteCheckbox === 'finished') {
-                this.notesStorage.setStatus(event);
-            }
+        this.listContainer.addEventListener('change', async (event) => {
+
+            await this.changeState(event);
         });
 
-        this.styleSwitch.addEventListener('change', (event) => {
-            this.styleSwitcher.switchStyle(event);
+        this.styleSwitch.addEventListener('change', async (event) => {
+            await this.styleSwitcher.switchStyle(event);
         });
+    }
+
+
+
+
+
+    async filterNotes (event) {
+        if (Boolean(event.target.dataset.filter) === true) {
+
+            const filterBy = event.target.dataset.filterBy;
+            const noteStatus = event.target.dataset.noteStatus;
+            await this.renderNotes(
+                await this.noteService.getAllNotes(filterBy, noteStatus)
+            )
+        }
+    }
+
+    async changeState(event) {
+        const noteCheckbox = event.target.dataset.noteCheckbox;
+        if (noteCheckbox === 'finished') {
+            await this.notesStorage.setStatus(event);
+        }
     }
 
     async renderNotes(notes) {
         if (notes.length > 0 === true) {
 
-            const noteContainer = document.querySelector('#list-container');
-            noteContainer.innerHTML = await this.template(notes);
+            this.listContainer.innerHTML = await this.template(notes);
         } else {
-            const noteContainer = document.querySelector('#list-container');
-            noteContainer.innerHTML = await 'No items found';
+            this.listContainer.innerHTML = await 'No items found';
         }
     }
 
     async noteListAction() {
-        this.initEventHandlers();
+        await this.initEventHandlers();
         //this.renderNotes(this.notesStorage.getNotes());
         await this.renderNotes(await this.noteService.getAllNotes());
-        this.styleSwitcher.setStyle(this.styleSwitch);
+        await this.styleSwitcher.setStyle(this.styleSwitch);
     }
 }

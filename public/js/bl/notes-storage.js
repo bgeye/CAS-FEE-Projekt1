@@ -6,25 +6,23 @@ export class NotesStorage {
         this.noteService = noteService;
     }
 
-    async getNotes(orderBy, filter) {
-
-        let notesFiltered;
-        //const noteItems = this.dataService.getNoteData();
-        const noteItems = await this.noteService.getAllNotes();
-        console.log('in noteStorage'+noteItems);
-        switch (filter) {
-            case 'sort':
-                notesFiltered = this.filterSort(noteItems, orderBy);
-                console.log(notesFiltered);
-                return notesFiltered;
-            case 'criteria':
-                notesFiltered = this.filterByCriteria(noteItems, orderBy);
-                return notesFiltered;
-
-            default:
-                return noteItems;
-        }
-    }
+    // async getNotes(orderBy, filter) {
+    //
+    //     let notesFiltered;
+    //     //const noteItems = this.dataService.getNoteData();
+    //     const noteItems = await this.noteService.getAllNotes();
+    //     switch (filter) {
+    //         case 'sort':
+    //             notesFiltered = this.filterSort(noteItems, orderBy);
+    //             return notesFiltered;
+    //         case 'criteria':
+    //             notesFiltered = this.filterByCriteria(noteItems, orderBy);
+    //             return notesFiltered;
+    //
+    //         default:
+    //             return noteItems;
+    //     }
+    // }
 
     saveNotes(notes) {
         const dataType = 'notes';
@@ -50,31 +48,31 @@ export class NotesStorage {
         return noteItem;
     }
 
-    filterSort(noteItems, orderBy) {
+    // filterSort(noteItems, orderBy) {
+    //
+    //     const filteredSort = noteItems.sort(function (a, b) {
+    //         let filterItemA = a[orderBy], filterItemB = b[orderBy];
+    //         return filterItemA < filterItemB ? -1 : filterItemA > filterItemB ? 1 : 0;
+    //     });
+    //     return filteredSort;
+    // }
+    //
+    // filterByCriteria(noteItems, orderBy) {
+    //     const filteredByCriteria = noteItems.filter(note => note[orderBy] === true);
+    //     return filteredByCriteria;
+    // }
 
-        const filteredSort = noteItems.sort(function (a, b) {
-            let filterItemA = a[orderBy], filterItemB = b[orderBy];
-            return filterItemA < filterItemB ? -1 : filterItemA > filterItemB ? 1 : 0;
-        });
-        return filteredSort;
-    }
-
-    filterByCriteria(noteItems, orderBy) {
-        const filteredByCriteria = noteItems.filter(note => note[orderBy] === true);
-        return filteredByCriteria;
-    }
-
-    addNote(event, noteTitle, noteDescription, noteImportance, noteDoneDate, noteFinished) {
-
-        if(this.getUrlId()){
-            const noteId = this.getUrlId();
-            return this.updateNote(noteTitle, noteDescription, noteImportance, noteDoneDate, noteFinished, noteId);
-
-        } else {
-
-            return this.createNote(noteTitle, noteDescription, noteImportance, noteDoneDate);
-        }
-    }
+    // addNote(noteTitle, noteDescription, noteImportance, noteDoneDate, noteFinished) {
+    //
+    //     if(this.getUrlId()){
+    //         const noteId = this.getUrlId();
+    //         return this.updateNote(noteTitle, noteDescription, noteImportance, noteDoneDate, noteFinished, noteId);
+    //
+    //     } else {
+    //
+    //         return this.createNote(noteTitle, noteDescription, noteImportance, noteDoneDate);
+    //     }
+    // }
 
     updateNote(noteTitle, noteDescription, noteImportance, noteDoneDate, noteItemFinished = false, noteItemId) {
         const noteId = noteItemId;
@@ -92,27 +90,42 @@ export class NotesStorage {
         return notes;
     }
 
-    createNote(noteTitle, noteDescription, noteImportance, noteDoneDate) {
-        const newId = this.createNewId();
+    // createNote(noteTitle, noteDescription, noteImportance, noteDoneDate) {
+    //     const newId = this.createNewId();
+    //     const finished = false;
+    //     const createDate = String(Date.now());
+    //
+    //     const newNote = {
+    //         id: newId,
+    //         title: noteTitle,
+    //         description: noteDescription,
+    //         importance: noteImportance,
+    //         doneDate: noteDoneDate,
+    //         createDate: createDate,
+    //         finished: finished
+    //
+    //     };
+    //
+    //
+    //     const notes = this.getNotes();
+    //     notes.push(newNote);
+    //
+    //     return notes;
+    // }
+
+    prepareNote(noteTitle, noteDescription, noteImportance, noteDoneDate) {
         const finished = false;
         const createDate = String(Date.now());
 
         const newNote = {
-            id: newId,
             title: noteTitle,
             description: noteDescription,
             importance: noteImportance,
             doneDate: noteDoneDate,
             createDate: createDate,
             finished: finished
-
         };
-
-
-        const notes = this.getNotes();
-        notes.push(newNote);
-
-        return notes;
+        return newNote;
     }
 
 
