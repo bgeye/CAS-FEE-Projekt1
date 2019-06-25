@@ -48,8 +48,11 @@ export class NoteListController {
 
     async changeState(event) {
         const noteCheckbox = event.target.dataset.noteCheckbox;
+
         if (noteCheckbox === 'finished') {
-            await this.notesStorage.setStatus(event);
+            const statusInfo = await this.notesStorage.prepareStatusInfo(event);
+            await this.noteService.updateNoteStatus(statusInfo.id, statusInfo.noteChecked);
+            //await this.notesStorage.setStatus(event);
         }
     }
 
@@ -63,9 +66,8 @@ export class NoteListController {
     }
 
     async noteListAction() {
-        await this.initEventHandlers();
-        //this.renderNotes(this.notesStorage.getNotes());
+        this.initEventHandlers();
         await this.renderNotes(await this.noteService.getAllNotes());
-        await this.styleSwitcher.setStyle(this.styleSwitch);
+        this.styleSwitcher.setStyle(this.styleSwitch);
     }
 }

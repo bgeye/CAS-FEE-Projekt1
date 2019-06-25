@@ -26,7 +26,7 @@ app.get("/", function() {
    res.sendFile("/html/index.html", {root:__dirname + '/public/'});
 });
 
-app.use("/notes", noteRoutes);
+app.use("/notes", noteRoutes); //register routes
 
 // app.use(function(err, req, res, next) {
 //     if(err.name === '') {

@@ -53,7 +53,8 @@
                                 <small>{{formatDate doneDate 'LL'}}</small>
                             </div>
                             <div class="item__finished">
-                                <input type="checkbox" name="finished" id="finished-{{_id}}" data-note-id="{{id}}" data-note-checkbox="finished"
+                                <input type="checkbox" name="finished" id="finished-{{_id}}" data-note-id="{{_id}}" data-note-checkbox="finished"
+
                                        {{isFinished finished}}>
                                 <label for="finished-{{_id}}">
                                     <small>Finished</small>

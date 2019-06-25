@@ -1,19 +1,6 @@
 export class DataService {
-    constructor(initialData) {
+    constructor() {
 
-        this.initialData = initialData;
-
-    }
-
-    getNoteData() {
-        const dataTypeNotes = 'notes';
-        let notes = this.getLocalData(dataTypeNotes);
-        if (!notes) {
-            this.updateData(dataTypeNotes, this.initialData);
-            notes = this.getLocalData(dataTypeNotes);
-        }
-
-        return notes;
     }
 
     getLocalData(dataType) {

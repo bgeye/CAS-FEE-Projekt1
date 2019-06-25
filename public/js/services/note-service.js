@@ -12,7 +12,6 @@ class NoteService {
         return await httpService.ajax("GET", `/notes?filterBy=${filterBy}&noteStatus=${noteStatus}`,undefined);
     }
 
-
     async getNote(id) {
         return await httpService.ajax("GET", `/notes/${id}`, undefined);
     }
@@ -20,6 +19,11 @@ class NoteService {
     async updateNote(id, changes) {
         return await httpService.ajax("PUT", `/notes/${id}`, changes);
     }
+
+    async updateNoteStatus(id, noteStatus) {
+        return await httpService.ajax("PATCH", `/notes/${id}`, {finished:noteStatus});
+    }
+
 }
 
 export const noteService = new NoteService();

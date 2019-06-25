@@ -9,7 +9,7 @@ import {noteService} from "./services/note-service.js";
 class CreateNoteBootstrapper {
     static start() {
         const dataService = new DataService();
-        const notesStorage = new NotesStorage(urlId, dataService);
+        const notesStorage = new NotesStorage();
         const styleSwitcher = new StyleSwitcher(dataService);
         new CreateNoteController(notesStorage, urlId, styleSwitcher, noteService).createNoteAction();
     }

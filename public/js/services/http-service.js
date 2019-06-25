@@ -7,7 +7,6 @@ class HttpService {
             headers: fetchHeaders, body: JSON.stringify(data)
 
         }).then(x => {
-            console.log(x.json);
             return x.json();
         })
     }

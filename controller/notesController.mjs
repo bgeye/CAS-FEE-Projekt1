@@ -6,17 +6,20 @@ export class NotesController {
     };
 
     async createNote(req, res) {
-        console.log(req.body);
         res.json(await noteStore.add(req.body));
     }
 
     async getNoteById(req, res) {
-        console.log(req.params.id);
         res.json(await noteStore.get(req.params.id));
     }
 
-    async updateNote() {
+    async updateNote(req, res) {
         res.json(await noteStore.update(req.params.id,req.body))
+    }
+
+    async updateNoteStatus(req, res) {
+        console.log(req);
+        res.json(await noteStore.patch(req.params.id,req.body.finished))
     }
 
 

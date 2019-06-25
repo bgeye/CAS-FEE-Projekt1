@@ -1,115 +1,22 @@
 export class NotesStorage {
-    //constructor(urlId, dataService) {
-    constructor(urlId, noteService) {
-        this.getUrlId = urlId;
-        //this.dataService = dataService;
-        this.noteService = noteService;
+    constructor() {
+
     }
 
-    // async getNotes(orderBy, filter) {
-    //
-    //     let notesFiltered;
-    //     //const noteItems = this.dataService.getNoteData();
-    //     const noteItems = await this.noteService.getAllNotes();
-    //     switch (filter) {
-    //         case 'sort':
-    //             notesFiltered = this.filterSort(noteItems, orderBy);
-    //             return notesFiltered;
-    //         case 'criteria':
-    //             notesFiltered = this.filterByCriteria(noteItems, orderBy);
-    //             return notesFiltered;
-    //
-    //         default:
-    //             return noteItems;
-    //     }
-    // }
 
-    saveNotes(notes) {
-        const dataType = 'notes';
-        this.dataService.updateData(dataType, notes);
-    }
-
-    getNoteIndexById(noteId) {
-        const notes = this.getNotes();
-        let noteIndex = notes.findIndex(note => note.id === noteId);
-        return noteIndex;
-    }
-
-    //only temporary
-    createNewId() {
-        let notes = this.getNotes();
-        notes = notes.length + 1;
-        return notes.toString();
-    }
-
-    getNoteById(noteId) {
-        const notes = this.getNotes();
-        let noteItem = notes.find(note => note.id === noteId);
-        return noteItem;
-    }
-
-    // filterSort(noteItems, orderBy) {
+    // updateNote(noteTitle, noteDescription, noteImportance, noteDoneDate, noteItemFinished = false, noteItemId) {
+    //     const noteId = noteItemId;
+    //     const noteIndex = this.getNoteIndexById(noteId);
+    //     const noteItem = this.getNoteById(noteId);
     //
-    //     const filteredSort = noteItems.sort(function (a, b) {
-    //         let filterItemA = a[orderBy], filterItemB = b[orderBy];
-    //         return filterItemA < filterItemB ? -1 : filterItemA > filterItemB ? 1 : 0;
-    //     });
-    //     return filteredSort;
-    // }
-    //
-    // filterByCriteria(noteItems, orderBy) {
-    //     const filteredByCriteria = noteItems.filter(note => note[orderBy] === true);
-    //     return filteredByCriteria;
-    // }
-
-    // addNote(noteTitle, noteDescription, noteImportance, noteDoneDate, noteFinished) {
-    //
-    //     if(this.getUrlId()){
-    //         const noteId = this.getUrlId();
-    //         return this.updateNote(noteTitle, noteDescription, noteImportance, noteDoneDate, noteFinished, noteId);
-    //
-    //     } else {
-    //
-    //         return this.createNote(noteTitle, noteDescription, noteImportance, noteDoneDate);
-    //     }
-    // }
-
-    updateNote(noteTitle, noteDescription, noteImportance, noteDoneDate, noteItemFinished = false, noteItemId) {
-        const noteId = noteItemId;
-        const noteIndex = this.getNoteIndexById(noteId);
-        const noteItem = this.getNoteById(noteId);
-
-        noteItem.title = noteTitle;
-        noteItem.description = noteDescription;
-        noteItem.importance = noteImportance;
-        noteItem.doneDate = noteDoneDate;
-        noteItem.finished = noteItemFinished;
-
-        const notes = this.getNotes();
-        notes[noteIndex] = noteItem;
-        return notes;
-    }
-
-    // createNote(noteTitle, noteDescription, noteImportance, noteDoneDate) {
-    //     const newId = this.createNewId();
-    //     const finished = false;
-    //     const createDate = String(Date.now());
-    //
-    //     const newNote = {
-    //         id: newId,
-    //         title: noteTitle,
-    //         description: noteDescription,
-    //         importance: noteImportance,
-    //         doneDate: noteDoneDate,
-    //         createDate: createDate,
-    //         finished: finished
-    //
-    //     };
-    //
+    //     noteItem.title = noteTitle;
+    //     noteItem.description = noteDescription;
+    //     noteItem.importance = noteImportance;
+    //     noteItem.doneDate = noteDoneDate;
+    //     noteItem.finished = noteItemFinished;
     //
     //     const notes = this.getNotes();
-    //     notes.push(newNote);
-    //
+    //     notes[noteIndex] = noteItem;
     //     return notes;
     // }
 
@@ -128,14 +35,12 @@ export class NotesStorage {
         return newNote;
     }
 
+    prepareStatusInfo(event) {
 
-    setStatus(event) {
-        const noteId = event.target.dataset.noteId;
-        const noteChecked = event.target.checked;
-        const noteItem = this.getNoteById(noteId);
-
-        noteItem.finished = noteChecked;
-        const notes = this.updateNote(noteItem.title, noteItem.description, noteItem.importance, noteItem.doneDate, noteItem.finished, noteId);
-        this.saveNotes(notes);
+        const statusDetail = {
+            noteId: event.target.dataset.noteId,
+            noteChecked: event.target.checked
+        };
+        return statusDetail;
     }
 }
