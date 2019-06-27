@@ -7,12 +7,20 @@
 
 }
 
+.main-content {
+    width: 75vw;
+    max-width: 900px;
+}
+
+.create-note .main-content {
+    width: auto;
+    max-width: none;
+}
+
 header {
     grid-area: header;
     padding: 1rem;
     text-align: center;
-    /*position:fixed;*/
-    /*width: 100%;*/
 }
 
 main {
