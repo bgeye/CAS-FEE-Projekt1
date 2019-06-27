@@ -1,4 +1,3 @@
-
 export class NoteListController {
     constructor(notesStorage, styleSwitcher, noteService) {
         this.notesStorage = notesStorage;
@@ -32,14 +31,11 @@ export class NoteListController {
     }
 
 
-
-
-
-    async filterNotes (event) {
+    async filterNotes(event) {
         if (Boolean(event.target.dataset.filter) === true) {
 
             const filterBy = event.target.dataset.filterBy;
-            const noteStatus = event.target.dataset.noteStatus;
+            const noteStatus = Boolean(event.target.dataset.noteStatus);
             await this.renderNotes(
                 await this.noteService.getAllNotes(filterBy, noteStatus)
             )
@@ -51,8 +47,7 @@ export class NoteListController {
 
         if (noteCheckbox === 'finished') {
             const statusInfo = await this.notesStorage.prepareStatusInfo(event);
-            await this.noteService.updateNoteStatus(statusInfo.id, statusInfo.noteChecked);
-            //await this.notesStorage.setStatus(event);
+            await this.noteService.updateNoteStatus(statusInfo.noteId, statusInfo.noteChecked);
         }
     }
 

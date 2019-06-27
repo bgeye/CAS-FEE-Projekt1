@@ -2,6 +2,7 @@ import {noteStore} from "../services/noteStore.mjs";
 
 export class NotesController {
     async getNotes(req, res) {
+        console.log(req.query);
         res.json((await noteStore.all(req.query.filterBy,req.query.noteStatus) || []))
     };
 
@@ -18,8 +19,8 @@ export class NotesController {
     }
 
     async updateNoteStatus(req, res) {
-        console.log(req);
-        res.json(await noteStore.patch(req.params.id,req.body.finished))
+        console.log(req.body.noteStatus, req.params.id);
+        res.json(await noteStore.patch(req.params.id,req.body.noteStatus))
     }
 
 

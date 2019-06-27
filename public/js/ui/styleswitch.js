@@ -29,7 +29,7 @@ export class StyleSwitcher {
         const styles = [];
 
         styles.push(styleTheme);
-        this.dataService.updateData(this.dataType,styles);
+        this.dataService.updateData(this.dataType, styles);
     }
 
     getStyleFromLocalStorage() {

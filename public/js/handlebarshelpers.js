@@ -14,7 +14,6 @@ Handlebars.registerHelper('checkImportance', function (value, importance) {
  * Check if note has state finished
  */
 Handlebars.registerHelper('isFinished', function (value) {
-    console.log(typeof value)
     if (Boolean(value) === true) {
         return 'checked'
     } else {

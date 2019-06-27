@@ -1,13 +1,12 @@
 import DataStore from 'nedb-promise';
 
-
 export class NoteStore {
     constructor(db) {
         this.db = db || new DataStore({filename: './data/notes.db', autoload: true});
         this.filterByParam = {
-            doneDate : {doneDate: 1},
-            createDate : {createDate : -1},
-            importance : {importance: -1}
+            doneDate: {doneDate: 1},
+            createDate: {createDate: -1},
+            importance: {importance: -1}
         };
     }
 
@@ -22,7 +21,7 @@ export class NoteStore {
     }
 
     async patch(id, noteStatus) {
-        await this.db.update({_id: id}, {finished: noteStatus});
+        await this.db.update({_id: id}, {$set: {finished: noteStatus}}, {});
         return await this.get(id);
     }
 
@@ -31,14 +30,13 @@ export class NoteStore {
     }
 
     async all(filterBy, noteStatus) {
-        let searchParam;
-        if(noteStatus === "true") {
-            searchParam = {finished:"true"}
-        }
 
+        let searchParam;
+        if (noteStatus === 'true') {
+            searchParam = {finished: true}
+        }
         return await this.db.cfind(searchParam).sort(this.filterByParam[filterBy]).exec();
     }
-
 }
 
 export const noteStore = new NoteStore();
