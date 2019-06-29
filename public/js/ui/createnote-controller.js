@@ -33,7 +33,7 @@ export class CreateNoteController {
         const noteTitle = document.querySelector('#title').value || '';
         const noteDescription = document.querySelector('#description').value || '';
         const noteImportance = document.querySelector('input[name="importance"]:checked').value;
-        const noteDoneDate = new Date(document.querySelector('#donedate').value);
+        const noteDoneDate = new Date(document.querySelector('#donedate').value).getTime();
         const noteFinished = (document.querySelector('input[name="finished"]').value === "true");
         const note = await this.notesStorage.prepareNote(noteTitle, noteDescription, noteImportance, noteDoneDate, noteFinished);
         await this.saveNote(note);
