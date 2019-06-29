@@ -9,6 +9,7 @@ export class DataService {
     }
 
     updateData(dataType, data) {
+
         localStorage.setItem(dataType, JSON.stringify(data));
     }
 }

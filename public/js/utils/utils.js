@@ -3,5 +3,4 @@ export const urlId = () => {
     const queryString = window.location.search;
     const searchParams = new URLSearchParams(queryString);
     return searchParams.get('id');
-
 };

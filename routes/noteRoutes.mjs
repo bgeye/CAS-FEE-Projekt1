@@ -7,7 +7,7 @@ router.get("/", notesController.getNotes.bind(notesController));
 router.post("/", notesController.createNote.bind(notesController));
 router.get("/:id", notesController.getNoteById.bind(notesController));
 router.put("/:id", notesController.updateNote.bind(notesController));
-router.patch("/:id", notesController.updateNoteStatus.bind(notesController));
+router.patch("/:id", notesController.updateNoteDetail.bind(notesController));
 
 
 export const noteRoutes = router;

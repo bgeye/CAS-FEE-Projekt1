@@ -16,16 +16,19 @@ export class NoteStore {
     }
 
     async update(id, changes) {
+
         await this.db.update({_id: id}, {$set: changes});
         return await this.get(id);
     }
 
-    async patch(id, noteStatus) {
-        await this.db.update({_id: id}, {$set: {finished: noteStatus}}, {});
+    async patch(id, noteDetail) {
+
+        await this.db.update({_id: id}, {$set: noteDetail}, {});
         return await this.get(id);
     }
 
     async get(id) {
+
         return await this.db.findOne({_id: id});
     }
 

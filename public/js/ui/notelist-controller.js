@@ -47,7 +47,7 @@ export class NoteListController {
 
         if (noteCheckbox === 'finished') {
             const statusInfo = await this.notesStorage.prepareStatusInfo(event);
-            await this.noteService.updateNoteStatus(statusInfo.noteId, statusInfo.noteChecked);
+            await this.noteService.updateNoteDetail(statusInfo.noteId, statusInfo.noteChecked);
         }
     }
 
