@@ -3,3 +3,4 @@ CAS-FEE Projekt1
 
 ## Setup
         npm install
+        npm start
