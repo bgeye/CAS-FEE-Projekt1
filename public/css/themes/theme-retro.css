@@ -53,7 +53,7 @@ body.theme-retro {
 }
 
 .theme-retro .item__description > .btn {
-    background-color: var(--color-retro-dark-yellow);;
+    background-color: var(--color-retro-dark-yellow);
 }
 
 .theme-retro .item__right > .btn > i {
